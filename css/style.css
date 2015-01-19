@@ -4,23 +4,26 @@ html, body {
   padding: 0;
 }
 
-/* line 6, ../sass/style.scss */
-#page {
+/* line 7, ../sass/style.scss */
+header .logo {
+  float: left;
+}
+/* line 11, ../sass/style.scss */
+header .globalNav {
+  float: right;
+}
+
+/* line 16, ../sass/style.scss */
+.page {
+  clear: both;
   position: relative;
   z-index: 10;
   padding: 20px;
   background: #fff;
 }
 
-/* line 13, ../sass/style.scss */
-#toggle-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* line 20, ../sass/style.scss */
-#menu {
+/* line 24, ../sass/style.scss */
+.slideinMenu {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -35,8 +38,8 @@ html, body {
   -webkit-overflow-scrolling: touch;
 }
 @media only screen and (min-width: 768px) {
-  /* line 20, ../sass/style.scss */
-  #menu {
+  /* line 24, ../sass/style.scss */
+  .slideinMenu {
     position: static;
     display: block;
     background: none;
@@ -44,67 +47,81 @@ html, body {
   }
 }
 
+/* line 46, ../sass/style.scss */
+.js-menuToggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
 @media only screen and (min-width: 768px) {
-  /* line 42, ../sass/style.scss */
-  #menu li {
+  /* line 46, ../sass/style.scss */
+  .js-menuToggle {
+    display: none !important;
+  }
+}
+
+/* Fix the positioning of the inside close button */
+/* line 57, ../sass/style.scss */
+.slideinMenu .js-menuToggle {
+  position: static;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 61, ../sass/style.scss */
+  .slideinMenu li {
     display: inline;
   }
 }
 
-/* line 48, ../sass/style.scss */
-#menu a {
+/* line 67, ../sass/style.scss */
+.slideinMenu a {
   display: block;
   color: #fff;
   padding: 15px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 @media only screen and (min-width: 768px) {
-  /* line 48, ../sass/style.scss */
-  #menu a {
+  /* line 67, ../sass/style.scss */
+  .slideinMenu a {
     display: inline;
     border-bottom: none;
     color: #000;
   }
 }
 
-/* Animation using CSS transitions */
-/* line 63, ../sass/style.scss */
-.animating #menu, .menu-visible #menu {
-  display: block;
-}
-
-/* line 68, ../sass/style.scss */
-.animating #menu {
-  transition: -webkit-transform .25s ease-in-out;
-  transition: all .25s ease-in-out;
-}
-
-/* line 73, ../sass/style.scss */
-.animating.left #menu {
-  -webkit-transform: translate3d(-240px, 0, 0);
-  transform: translate3d(-240px, 0, 0);
-}
-
-/* line 78, ../sass/style.scss */
-.animating.right #menu {
-  -webkit-transform: translate3d(240px, 0, 0);
-  transform: translate3d(240px, 0, 0);
-}
-
-/* line 83, ../sass/style.scss */
-.menu-visible #menu {
-  right: 0;
-}
-
-/* line 87, ../sass/style.scss */
-#page, #menu {
+/* Fix animation flicker on mobile */
+/* line 81, ../sass/style.scss */
+.page,
+.slideinMenu {
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
 
-@media only screen and (min-width: 768px) {
-  /* line 93, ../sass/style.scss */
-  .isMenuToggle {
-    display: none !important;
-  }
+/* Animation using CSS transitions */
+/* line 89, ../sass/style.scss */
+.animating .slideinMenu, .menu-visible .slideinMenu {
+  display: block;
+}
+
+/* line 92, ../sass/style.scss */
+.animating .slideinMenu {
+  transition: -webkit-transform .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+/* line 96, ../sass/style.scss */
+.animating.left .slideinMenu {
+  -webkit-transform: translate3d(-240px, 0, 0);
+  transform: translate3d(-240px, 0, 0);
+}
+
+/* line 100, ../sass/style.scss */
+.animating.right .slideinMenu {
+  -webkit-transform: translate3d(240px, 0, 0);
+  transform: translate3d(240px, 0, 0);
+}
+
+/* line 105, ../sass/style.scss */
+.menu-visible .slideinMenu {
+  right: 0;
 }

@@ -3,31 +3,35 @@ html, body {
   padding: 0;
 }
 
-#page {
+header {
+  .logo {
+    float: left;
+  }
+
+  .globalNav {
+    float: right;
+  }
+}
+
+.page {
+  clear: both;
   position: relative;
   z-index: 10;
-  padding: 20px;    // Lower than the menu
+  padding: 20px;            // Lower than the menu
   background: #fff;
 }
 
-#toggle-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-
-#menu {
+.slideinMenu {
   position: fixed;
   top: 0;
   bottom: 0;
-  right: -240px;  // Width + padding of menu
+  right: -240px;            // Width + padding of menu
   width: 190px;
   padding: 15px 25px;
   margin: 0;
   list-style: none;
   background: #333;
-  z-index: 20;        // Higher than the page
+  z-index: 20;              // Higher than the page
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
@@ -39,17 +43,32 @@ html, body {
   }
 }
 
-#menu li {
+.js-menuToggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  @media only screen and (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+/* Fix the positioning of the inside close button */
+.slideinMenu .js-menuToggle {
+  position: static;
+}
+
+.slideinMenu li {
   @media only screen and (min-width: 768px) {
     display: inline;
   }
 }
 
-#menu a {
+.slideinMenu a {
   display: block;
   color: #fff;
   padding: 15px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
   @media only screen and (min-width: 768px) {
     display: inline;
@@ -58,41 +77,33 @@ html, body {
   }
 }
 
-
-/* Animation using CSS transitions */
-.animating #menu, .menu-visible #menu {
-  display: block;
-
-}
-
-.animating #menu {
-  transition: -webkit-transform .25s ease-in-out;
-  transition: all .25s ease-in-out;
-}
-
-.animating.left #menu {
-  -webkit-transform: translate3d(-240px, 0, 0);
-          transform: translate3d(-240px, 0, 0);
-}
-
-.animating.right #menu {
-  -webkit-transform: translate3d(240px, 0, 0);
-          transform: translate3d(240px, 0, 0);
-}
-
-.menu-visible #menu {
-  right: 0;
-}
-
-#page, #menu {
+/* Fix animation flicker on mobile */
+.page, 
+.slideinMenu {
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
 
-@media only screen and (min-width: 768px) {
-  .isMenuToggle {
-    display: none !important;
-  }
+
+/* Animation using CSS transitions */
+.animating .slideinMenu, .menu-visible .slideinMenu {
+  display: block;
+}
+.animating .slideinMenu {
+  transition: -webkit-transform .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+.animating.left .slideinMenu {
+  -webkit-transform: translate3d(-240px, 0, 0);
+          transform: translate3d(-240px, 0, 0);
+}
+.animating.right .slideinMenu {
+  -webkit-transform: translate3d(240px, 0, 0);
+          transform: translate3d(240px, 0, 0);
+}
+
+.menu-visible .slideinMenu {
+  right: 0;
 }
 
 
