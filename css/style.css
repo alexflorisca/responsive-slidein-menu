@@ -1,4 +1,110 @@
 /* line 1, ../sass/style.scss */
-body {
-  font-size: 20px;
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 6, ../sass/style.scss */
+#page {
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  background: #fff;
+}
+
+/* line 13, ../sass/style.scss */
+#toggle-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* line 20, ../sass/style.scss */
+#menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -240px;
+  width: 190px;
+  padding: 15px 25px;
+  margin: 0;
+  list-style: none;
+  background: #333;
+  z-index: 20;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media only screen and (min-width: 768px) {
+  /* line 20, ../sass/style.scss */
+  #menu {
+    position: static;
+    display: block;
+    background: none;
+    right: 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 42, ../sass/style.scss */
+  #menu li {
+    display: inline;
+  }
+}
+
+/* line 48, ../sass/style.scss */
+#menu a {
+  display: block;
+  color: #fff;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+@media only screen and (min-width: 768px) {
+  /* line 48, ../sass/style.scss */
+  #menu a {
+    display: inline;
+    border-bottom: none;
+    color: #000;
+  }
+}
+
+/* Animation using CSS transitions */
+/* line 63, ../sass/style.scss */
+.animating #menu, .menu-visible #menu {
+  display: block;
+}
+
+/* line 68, ../sass/style.scss */
+.animating #menu {
+  transition: -webkit-transform .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+/* line 73, ../sass/style.scss */
+.animating.left #menu {
+  -webkit-transform: translate3d(-240px, 0, 0);
+  transform: translate3d(-240px, 0, 0);
+}
+
+/* line 78, ../sass/style.scss */
+.animating.right #menu {
+  -webkit-transform: translate3d(240px, 0, 0);
+  transform: translate3d(240px, 0, 0);
+}
+
+/* line 83, ../sass/style.scss */
+.menu-visible #menu {
+  right: 0;
+}
+
+/* line 87, ../sass/style.scss */
+#page, #menu {
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 93, ../sass/style.scss */
+  .isMenuToggle {
+    display: none !important;
+  }
 }
